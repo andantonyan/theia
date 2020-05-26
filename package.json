@@ -4,7 +4,7 @@
   "productName": "Theia",
   "version": "1.0.0",
   "main": "src-gen/frontend/electron-main.js",
-  "license": "EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0",
+  "license": "",
   "theia": {
     "target": "electron",
     "frontend": {
@@ -13,59 +13,45 @@
       }
     }
   },
+  "engines": {
+    "yarn": "1.0.x || >=1.2.1",
+    "node": ">=10.11.0 <12"
+  },
+  "resolutions": {
+    "**/@types/node": "~10.3.6",
+    "**/vscode-json-languageserver/**/vscode-languageserver": "6.0.0-next.1"
+  },
   "dependencies": {
     "@theia/callhierarchy": "next",
-    "@theia/console": "next",
-    "@theia/core": "next",
-    "@theia/debug": "next",
-    "@theia/editor": "next",
-    "@theia/editor-preview": "next",
-    "@theia/electron": "^1.2.0-next.82cc44c5",
     "@theia/file-search": "next",
-    "@theia/filesystem": "next",
-    "@theia/getting-started": "next",
     "@theia/git": "next",
     "@theia/json": "next",
-    "@theia/keymaps": "next",
-    "@theia/languages": "next",
     "@theia/markers": "next",
     "@theia/messages": "next",
-    "@theia/metrics": "next",
     "@theia/mini-browser": "next",
-    "@theia/monaco": "next",
     "@theia/navigator": "next",
     "@theia/outline-view": "next",
-    "@theia/output": "next",
-    "@theia/plugin-dev": "next",
-    "@theia/plugin-ext": "next",
     "@theia/plugin-ext-vscode": "next",
     "@theia/preferences": "next",
     "@theia/preview": "next",
-    "@theia/process": "next",
-    "@theia/scm": "next",
-    "@theia/scm-extra": "next",
     "@theia/search-in-workspace": "next",
-    "@theia/task": "next",
-    "@theia/terminal": "next",
-    "@theia/typehierarchy": "next",
-    "@theia/userstorage": "next",
-    "@theia/variable-resolver": "next",
-    "@theia/vsx-registry": "next",
-    "@theia/workspace": "next"
+    "@theia/terminal": "next"
   },
   "scripts": {
-    "lint": "theiaext lint",
+    "prepare": "yarn run clean && yarn build && yarn run download:plugins",
+    "start": "theia start",
     "clean": "theia clean",
-    "build": "theiaext compile && yarn bundle",
-    "bundle": "theia build --mode development",
-    "watch": "concurrently -n compile,bundle \"theiaext watch --preserveWatchOutput\" \"theia build --watch --mode development\"",
-    "start": "theia start --plugins=local-dir:./plugins",
-    "start:debug": "yarn start --log-level=debug",
-    "test": "electron-mocha --timeout 60000 \"./lib/test/**/*.espec.js\"",
+    "build": "theia build",
+    "rebuild": "theia rebuild",
+    "rebuild:browser": "theia rebuild:browser",
+    "rebuild:electron": "theia rebuild:electron",
+    "check:hoisted": "theia check:hoisted",
     "download:plugins": "theia download:plugins"
   },
   "devDependencies": {
-    "@theia/cli": "next"
+    "@theia/cli": "next",
+    "@theia/electron": "^1.1.0-next.84408de8",
+    "lerna": "^2.11.0"
   },
   "theiaPlugins": {
     "vscode-builtin-bat": "https://open-vsx.org/api/vscode/bat/1.44.2/file/vscode.bat-1.44.2.vsix",
