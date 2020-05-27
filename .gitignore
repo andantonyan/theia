@@ -25,3 +25,4 @@ gh-pages
 .vscode/ipch
 *.tsbuildinfo
 .eslintcache
+dist

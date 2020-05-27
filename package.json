@@ -4,120 +4,114 @@
   "productName": "Theia",
   "version": "1.0.0",
   "main": "src-gen/frontend/electron-main.js",
-  "license": "",
-  "theia": {
-    "target": "electron",
-    "frontend": {
-      "config": {
-        "applicationName": "Theia"
-      }
-    }
-  },
+  "license": "MIT",
   "engines": {
     "yarn": "1.0.x || >=1.2.1",
     "node": ">=10.11.0 <12"
   },
-  "resolutions": {
-    "**/@types/node": "~10.3.6",
-    "**/vscode-json-languageserver/**/vscode-languageserver": "6.0.0-next.1"
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/andantonyan/theia.git"
   },
-  "dependencies": {
-    "@theia/callhierarchy": "next",
-    "@theia/file-search": "next",
-    "@theia/git": "next",
-    "@theia/json": "next",
-    "@theia/markers": "next",
-    "@theia/messages": "next",
-    "@theia/mini-browser": "next",
-    "@theia/navigator": "next",
-    "@theia/outline-view": "next",
-    "@theia/plugin-ext-vscode": "next",
-    "@theia/preferences": "next",
-    "@theia/preview": "next",
-    "@theia/search-in-workspace": "next",
-    "@theia/terminal": "next"
+  "theia": {
+    "target": "electron",
+    "frontend": {
+      "config": {
+        "applicationName": "Theia",
+        "preferences": {
+          "files.enableTrash": false
+        }
+      }
+    },
+    "backend": {
+      "config": {
+        "startupTimeout": -1
+      }
+    }
   },
   "scripts": {
     "prepare": "yarn run clean && yarn build && yarn run download:plugins",
-    "start": "theia start",
+    "start": "theia start --plugins=local-dir:plugins",
     "clean": "theia clean",
     "build": "theia build",
     "rebuild": "theia rebuild",
     "rebuild:browser": "theia rebuild:browser",
     "rebuild:electron": "theia rebuild:electron",
     "check:hoisted": "theia check:hoisted",
-    "download:plugins": "theia download:plugins"
+    "download:plugins": "theia download:plugins",
+    "package": "electron-builder",
+    "package:preview": "electron-builder --dir"
+  },
+  "keywords": [],
+  "author": "andantonyan@gmail.com",
+  "bugs": {
+    "url": "https://github.com/andantonyan/theia/issues"
+  },
+  "homepage": "https://github.com/andantonyan/theia#readme",
+  "dependencies": {
+    "@theia/callhierarchy": "latest",
+    "@theia/console": "latest",
+    "@theia/core": "latest",
+    "@theia/cpp": "latest",
+    "@theia/cpp-debug": "latest",
+    "@theia/debug": "^1.1.0",
+    "@theia/debug-nodejs": "latest",
+    "@theia/editor": "latest",
+    "@theia/editor-preview": "latest",
+    "@theia/electron": "latest",
+    "@theia/file-search": "latest",
+    "@theia/filesystem": "latest",
+    "@theia/getting-started": "latest",
+    "@theia/git": "latest",
+    "@theia/json": "latest",
+    "@theia/keymaps": "latest",
+    "@theia/languages": "latest",
+    "@theia/markers": "latest",
+    "@theia/messages": "latest",
+    "@theia/metrics": "latest",
+    "@theia/mini-browser": "latest",
+    "@theia/monaco": "latest",
+    "@theia/navigator": "latest",
+    "@theia/node-pty": "latest",
+    "@theia/outline-view": "latest",
+    "@theia/output": "latest",
+    "@theia/plantuml": "latest",
+    "@theia/plugin": "latest",
+    "@theia/plugin-dev": "latest",
+    "@theia/plugin-ext": "latest",
+    "@theia/plugin-ext-vscode": "latest",
+    "@theia/plugin-metrics": "latest",
+    "@theia/preferences": "latest",
+    "@theia/preview": "latest",
+    "@theia/process": "latest",
+    "@theia/scm": "latest",
+    "@theia/scm-extra": "latest",
+    "@theia/search-in-workspace": "latest",
+    "@theia/task": "latest",
+    "@theia/terminal": "latest",
+    "@theia/typehierarchy": "latest",
+    "@theia/userstorage": "latest",
+    "@theia/variable-resolver": "latest",
+    "@theia/vsx-registry": "latest",
+    "@theia/workspace": "latest",
+    "find-git-repositories": "latest",
+    "nsfw": "latest"
   },
   "devDependencies": {
-    "@theia/cli": "next",
-    "@theia/electron": "^1.1.0-next.84408de8",
-    "lerna": "^2.11.0"
+    "@theia/cli": "latest",
+    "bufferutil": "4",
+    "electron-builder": "^22.4.1",
+    "lerna": "^2.11.0",
+    "utf-8-validate": "5"
   },
-  "theiaPlugins": {
-    "vscode-builtin-bat": "https://open-vsx.org/api/vscode/bat/1.44.2/file/vscode.bat-1.44.2.vsix",
-    "vscode-builtin-clojure": "https://open-vsx.org/api/vscode/clojure/1.44.2/file/vscode.clojure-1.44.2.vsix",
-    "vscode-builtin-coffeescript": "https://open-vsx.org/api/vscode/coffeescript/1.44.2/file/vscode.coffeescript-1.44.2.vsix",
-    "vscode-builtin-configuration-editing": "https://open-vsx.org/api/vscode/configuration-editing/1.44.2/file/vscode.configuration-editing-1.44.2.vsix",
-    "vscode-builtin-cpp": "https://open-vsx.org/api/vscode/cpp/1.44.2/file/vscode.cpp-1.44.2.vsix",
-    "vscode-builtin-csharp": "https://open-vsx.org/api/vscode/csharp/1.44.2/file/vscode.csharp-1.44.2.vsix",
-    "vscode-builtin-css": "https://open-vsx.org/api/vscode/css/1.44.2/file/vscode.css-1.44.2.vsix",
-    "vscode-builtin-debug-auto-launch": "https://open-vsx.org/api/vscode/debug-auto-launch/1.44.2/file/vscode.debug-auto-launch-1.44.2.vsix",
-    "vscode-builtin-docker": "https://open-vsx.org/api/vscode/docker/1.44.2/file/vscode.docker-1.44.2.vsix",
-    "vscode-builtin-emmet": "https://open-vsx.org/api/vscode/emmet/1.44.2/file/vscode.emmet-1.44.2.vsix",
-    "vscode-builtin-fsharp": "https://open-vsx.org/api/vscode/fsharp/1.44.2/file/vscode.fsharp-1.44.2.vsix",
-    "vscode-builtin-go": "https://open-vsx.org/api/vscode/go/1.44.2/file/vscode.go-1.44.2.vsix",
-    "vscode-builtin-groovy": "https://open-vsx.org/api/vscode/groovy/1.44.2/file/vscode.groovy-1.44.2.vsix",
-    "vscode-builtin-grunt": "https://open-vsx.org/api/vscode/grunt/1.44.2/file/vscode.grunt-1.44.2.vsix",
-    "vscode-builtin-gulp": "https://open-vsx.org/api/vscode/gulp/1.44.2/file/vscode.gulp-1.44.2.vsix",
-    "vscode-builtin-handlebars": "https://open-vsx.org/api/vscode/handlebars/1.44.2/file/vscode.handlebars-1.44.2.vsix",
-    "vscode-builtin-hlsl": "https://open-vsx.org/api/vscode/hlsl/1.44.2/file/vscode.hlsl-1.44.2.vsix",
-    "vscode-builtin-html": "https://open-vsx.org/api/vscode/html/1.44.2/file/vscode.html-1.44.2.vsix",
-    "vscode-builtin-ini": "https://open-vsx.org/api/vscode/ini/1.44.2/file/vscode.ini-1.44.2.vsix",
-    "vscode-builtin-jake": "https://open-vsx.org/api/vscode/jake/1.44.2/file/vscode.jake-1.44.2.vsix",
-    "vscode-builtin-java": "https://open-vsx.org/api/vscode/java/1.44.2/file/vscode.java-1.44.2.vsix",
-    "vscode-builtin-javascript": "https://open-vsx.org/api/vscode/javascript/1.44.2/file/vscode.javascript-1.44.2.vsix",
-    "vscode-builtin-json": "https://open-vsx.org/api/vscode/json/1.44.2/file/vscode.json-1.44.2.vsix",
-    "vscode-builtin-less": "https://open-vsx.org/api/vscode/less/1.44.2/file/vscode.less-1.44.2.vsix",
-    "vscode-builtin-log": "https://open-vsx.org/api/vscode/log/1.44.2/file/vscode.log-1.44.2.vsix",
-    "vscode-builtin-lua": "https://open-vsx.org/api/vscode/lua/1.44.2/file/vscode.lua-1.44.2.vsix",
-    "vscode-builtin-make": "https://open-vsx.org/api/vscode/make/1.44.2/file/vscode.make-1.44.2.vsix",
-    "vscode-builtin-markdown": "https://open-vsx.org/api/vscode/markdown/1.44.2/file/vscode.markdown-1.44.2.vsix",
-    "vscode-builtin-markdown-language-features": "https://open-vsx.org/api/vscode/markdown-language-features/1.39.1/file/vscode.markdown-language-features-1.39.1.vsix",
-    "vscode-builtin-merge-conflict": "https://open-vsx.org/api/vscode/merge-conflict/1.44.2/file/vscode.merge-conflict-1.44.2.vsix",
-    "vscode-builtin-npm": "https://open-vsx.org/api/vscode/npm/1.39.1/file/vscode.npm-1.39.1.vsix",
-    "vscode-builtin-node-debug": "https://github.com/theia-ide/vscode-node-debug/releases/download/v1.35.3/node-debug-1.35.3.vsix",
-    "vscode-builtin-node-debug2": "https://open-vsx.org/api/ms-vscode/node-debug2/1.33.0/file/ms-vscode.node-debug2-1.33.0.vsix",
-    "vscode-builtin-objective-c": "https://open-vsx.org/api/vscode/objective-c/1.44.2/file/vscode.objective-c-1.44.2.vsix",
-    "vscode-builtin-perl": "https://open-vsx.org/api/vscode/perl/1.44.2/file/vscode.perl-1.44.2.vsix",
-    "vscode-builtin-powershell": "https://open-vsx.org/api/vscode/powershell/1.44.2/file/vscode.powershell-1.44.2.vsix",
-    "vscode-builtin-pug": "https://open-vsx.org/api/vscode/pug/1.44.2/file/vscode.pug-1.44.2.vsix",
-    "vscode-builtin-python": "https://open-vsx.org/api/vscode/python/1.44.2/file/vscode.python-1.44.2.vsix",
-    "vscode-builtin-r": "https://open-vsx.org/api/vscode/r/1.44.2/file/vscode.r-1.44.2.vsix",
-    "vscode-builtin-razor": "https://open-vsx.org/api/vscode/razor/1.44.2/file/vscode.razor-1.44.2.vsix",
-    "vscode-builtin-ruby": "https://open-vsx.org/api/vscode/ruby/1.44.2/file/vscode.ruby-1.44.2.vsix",
-    "vscode-builtin-rust": "https://open-vsx.org/api/vscode/rust/1.44.2/file/vscode.rust-1.44.2.vsix",
-    "vscode-builtin-scss": "https://open-vsx.org/api/vscode/scss/1.44.2/file/vscode.scss-1.44.2.vsix",
-    "vscode-builtin-shaderlab": "https://open-vsx.org/api/vscode/shaderlab/1.44.2/file/vscode.shaderlab-1.44.2.vsix",
-    "vscode-builtin-shellscript": "https://open-vsx.org/api/vscode/shellscript/1.44.2/file/vscode.shellscript-1.44.2.vsix",
-    "vscode-builtin-sql": "https://open-vsx.org/api/vscode/sql/1.44.2/file/vscode.sql-1.44.2.vsix",
-    "vscode-builtin-swift": "https://open-vsx.org/api/vscode/swift/1.44.2/file/vscode.swift-1.44.2.vsix",
-    "vscode-builtin-theme-abyss": "https://open-vsx.org/api/vscode/theme-abyss/1.44.2/file/vscode.theme-abyss-1.44.2.vsix",
-    "vscode-builtin-theme-defaults": "https://open-vsx.org/api/vscode/theme-defaults/1.44.2/file/vscode.theme-defaults-1.44.2.vsix",
-    "vscode-builtin-theme-kimbie-dark": "https://open-vsx.org/api/vscode/theme-kimbie-dark/1.44.2/file/vscode.theme-kimbie-dark-1.44.2.vsix",
-    "vscode-builtin-theme-monokai": "https://open-vsx.org/api/vscode/theme-monokai/1.44.2/file/vscode.theme-monokai-1.44.2.vsix",
-    "vscode-builtin-theme-monokai-dimmed": "https://open-vsx.org/api/vscode/theme-monokai-dimmed/1.44.2/file/vscode.theme-monokai-dimmed-1.44.2.vsix",
-    "vscode-builtin-theme-quietlight": "https://open-vsx.org/api/vscode/theme-quietlight/1.44.2/file/vscode.theme-quietlight-1.44.2.vsix",
-    "vscode-builtin-theme-red": "https://open-vsx.org/api/vscode/theme-red/1.44.2/file/vscode.theme-red-1.44.2.vsix",
-    "vscode-builtin-theme-solarized-dark": "https://open-vsx.org/api/vscode/theme-solarized-dark/1.44.2/file/vscode.theme-solarized-dark-1.44.2.vsix",
-    "vscode-builtin-theme-tomorrow-night-blue": "https://open-vsx.org/api/vscode/theme-tomorrow-night-blue/1.44.2/file/vscode.theme-tomorrow-night-blue-1.44.2.vsix",
-    "vscode-builtin-typescript": "https://open-vsx.org/api/vscode/typescript/1.44.2/file/vscode.typescript-1.44.2.vsix",
-    "vscode-builtin-typescript-language-features": "https://open-vsx.org/api/vscode/typescript-language-features/1.44.2/file/vscode.typescript-language-features-1.44.2.vsix",
-    "vscode-builtin-vb": "https://open-vsx.org/api/vscode/vb/1.44.2/file/vscode.vb-1.44.2.vsix",
-    "vscode-builtin-icon-theme-seti": "https://open-vsx.org/api/vscode/vscode-theme-seti/1.44.2/file/vscode.vscode-theme-seti-1.44.2.vsix",
-    "vscode-builtin-xml": "https://open-vsx.org/api/vscode/xml/1.44.2/file/vscode.xml-1.44.2.vsix",
-    "vscode-builtin-yaml": "https://open-vsx.org/api/vscode/yaml/1.44.2/file/vscode.yaml-1.44.2.vsix",
-    "vscode-editorconfig": "https://open-vsx.org/api/EditorConfig/EditorConfig/0.14.4/file/EditorConfig.EditorConfig-0.14.4.vsix",
-    "vscode-eslint": "https://open-vsx.org/api/dbaeumer/vscode-eslint/2.1.1/file/dbaeumer.vscode-eslint-2.1.1.vsix",
-    "vscode-references-view": "https://open-vsx.org/api/ms-vscode/references-view/0.0.47/file/ms-vscode.references-view-0.0.47.vsix"
-  }
+  "resolutions": {
+    "vscode-json-languageserver": "1.2.2",
+    "vscode-languageserver-protocol": "3.15.0-next.9",
+    "vscode-languageserver-types": "3.15.0-next.5",
+    "**/vscode-json-languageserver/**/vscode-languageserver": "6.0.0-next.1",
+    "**/moment": "2.24.0",
+    "**/fs-extra": "^4.0.3"
+  },
+  "theiaPluginsDir": "plugins",
+  "theiaPlugins": {}
 }
