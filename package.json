@@ -203,6 +203,7 @@
     "streetsidesoftware.code-spell-checker": "https://github.com/streetsidesoftware/vscode-spell-checker/archive/v1.9.0.tar.gz",
     "bendixma.dart-data-class-generator": "https://github.com/bnxm/Dart-Data-Class-Generator/archive/0.3.0.tar.gz",
     "luanpotter.dart-import": "https://github.com/luanpotter/vscode-dart-import/archive/0.1.0.tar.gz",
-    "k--kato.intellij-idea-keybindings": "https://github.com/kasecato/vscode-intellij-idea-keybindings/releases/download/v0.2.40/intellij-idea-keybindings-0.2.40.vsix"
+    "k--kato.intellij-idea-keybindings": "https://github.com/kasecato/vscode-intellij-idea-keybindings/releases/download/v0.2.40/intellij-idea-keybindings-0.2.40.vsix",
+    "eamodio.gitlens": "https://open-vsx.org/api/eamodio/gitlens/10.2.1/file/eamodio.gitlens-10.2.1.vsix"
   }
 }
